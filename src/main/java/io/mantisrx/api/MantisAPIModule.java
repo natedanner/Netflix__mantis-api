@@ -120,9 +120,8 @@ public class MantisAPIModule extends AbstractModule {
     @Singleton
     HighAvailabilityServices provideHighAvailabilityServices(AbstractConfiguration configuration) {
         Properties props = new Properties();
-        configuration.getKeys("mantis").forEachRemaining(key -> {
-            props.put(key, configuration.getString(key));
-        });
+        configuration.getKeys("mantis").forEachRemaining(key ->
+            props.put(key, configuration.getString(key)));
 
         return HighAvailabilityServicesUtil.createHAServices(
             Configurations.frmProperties(props, CoreConfiguration.class));
@@ -130,9 +129,8 @@ public class MantisAPIModule extends AbstractModule {
 
     @Provides @Singleton MantisClient provideMantisClient(AbstractConfiguration configuration) {
         Properties props = new Properties();
-        configuration.getKeys("mantis").forEachRemaining(key -> {
-            props.put(key, configuration.getString(key));
-        });
+        configuration.getKeys("mantis").forEachRemaining(key ->
+            props.put(key, configuration.getString(key)));
 
         return new MantisClient(props);
     }
@@ -175,9 +173,8 @@ public class MantisAPIModule extends AbstractModule {
     @Provides @Singleton
     WorkerMetricsClient provideWorkerMetricsClient(AbstractConfiguration configuration) {
         Properties props = new Properties();
-        configuration.getKeys("mantis").forEachRemaining(key -> {
-            props.put(key, configuration.getString(key));
-        });
+        configuration.getKeys("mantis").forEachRemaining(key ->
+            props.put(key, configuration.getString(key)));
         return new WorkerMetricsClient(props);
     }
 
